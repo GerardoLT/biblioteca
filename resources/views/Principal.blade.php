@@ -25,10 +25,10 @@
                     <a  class="nav-link active" aria-current="page" style="color: aliceblue" href="/">Principal</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="1">Registro</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="1">Libros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Registrar Cliente</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
                   </li>
                 </ul>
               </div>

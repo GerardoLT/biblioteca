@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
+@include('modal_1')
+@include('modal_2')
+@include('modal_3')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registro </title>
+    <title>Libros</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
@@ -25,10 +28,10 @@
                     <a  class="nav-link active" aria-current="page" style="color: aliceblue" href="/">Principal</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="1">Registro</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="1">Libros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Registrar Cliente</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
                   </li>
                 </ul>
               </div>
@@ -41,7 +44,7 @@
     <br>
 <div >
     <br>
-    <div class="container col-md-4" style="background-color: darkgrey">
+    <div class="container col-md-6" style="background-color: darkgrey">
  <br>
 @if (session()->has('mensaje'))
 <br>
@@ -50,48 +53,47 @@
 </div>
 <br>
 @endif
+<table class="table table-dark table-hover">
+  <tr>
+    <td>
+      <table class="table table-dark table-hover">   
+        <tbody>
+            <tr>
+                <td>Fecha</td>
+                <td>Titulo</td>
+                <td>Recuerdo</td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+                </tr>
+        <tr>
      
+        <td> <a>d</a></td>
+        <td> <a>d</a></td>
+        <td> <a>d</a></td>
+        <td> 
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#2">
+                Editar
+            </button>
+        </td>
+        <td> 
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#3">
+            eliminar
+        </button>
+        
+        </td>
+        </tr>   
+        </tbody>
+         </table>
 
-<form action="Informacion" method="POST" >
-    @csrf
-    <div class="mb-3">
-      <label class="form-label">insertar ISBN</label>
-      <input  class="form-control" name="ISBN" value="{{old("ISBN")}}" >
-      <p class="text-danger">{{ $errors->first('ISBN') }}</p>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">insertar Titulo</label>
-      <input class="form-control" name="titulo" value="{{old("titulo")}}">
-      <p class="text-danger">{{ $errors->first('titulo') }}</p>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">insertar Autor</label>
-        <input  class="form-control" name="Autor" value="{{old("Paginas")}}">
-        <p class="text-danger">{{ $errors->first('Paginas') }}</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">insertar Paginas</label>
-        <input class="form-control" name="Paginas" value="{{old("Paginas")}}" >
-        <p class="text-danger">{{ $errors->first('Paginas') }}</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">insertar editorial</label>
-        <input  class="form-control" name="editorial" value="{{old("editorial")}}">
-        <p class="text-danger">{{ $errors->first('editorial') }}</p>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">insertar Mail de la Editorial</label>
-        <input class="form-control" name="Mail_Editorial" value="{{old("Mail_Editorial")}}">
-        <p class="text-danger">{{ $errors->first('Mail_Editorial') }}</p>
-      </div>
-  
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_1">
+        Agregar
+     </button>
+    </td>
+  </tr>
+</table>
 
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="submit" class="btn btn-primary">Agregar</button>
-      </div>
-
-
-  </form>
         </div>
       </div>
 
