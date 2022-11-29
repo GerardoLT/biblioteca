@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+
 @include('modal_1')
 @include('modal_2')
 @include('modal_3')
@@ -46,13 +47,7 @@
     <br>
     <div class="container col-md-6" style="background-color: darkgrey">
  <br>
-@if (session()->has('mensaje'))
-<br>
-<div class="alert alert-success" role="alert">
-  Todo correcto: Libro “{{session('mensaje')['titulo']}}” guardado
-</div>
-<br>
-@endif
+
 <table class="table table-dark table-hover">
   <tr>
     <td>
@@ -66,10 +61,10 @@
                 <td>Eliminar</td>
                 </tr>
         <tr>
-     
-        <td> <a>d</a></td>
-        <td> <a>d</a></td>
-        <td> <a>d</a></td>
+        @foreach($Datos as $consulta)
+        <td> <a>{{$consulta->TITULO}}</a></td>
+        <td> <a>{{$consulta->AUTOR}}</a></td>
+        <td> <a>{{$consulta->EDITORIAL}}</a></td>
         <td> 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#2">
                 Editar
@@ -82,6 +77,7 @@
         
         </td>
         </tr>   
+        @endforeach
         </tbody>
          </table>
 
@@ -96,7 +92,13 @@
 
         </div>
       </div>
-
+      @if (session()->has('confirmacion'))
+      <br>
+      <div class="alert alert-success" role="alert">
+         Libro guardado
+      </div>
+      <br>
+      @endif
     </div>
   <div>
     <br>

@@ -11,7 +11,7 @@
 
         <div class="modal-body" style="text-align: center">
           <div style="background-color: grey">
-          <form action="Informacion" method="POST" >
+          <form action="guardar" method="POST" >
             @csrf
             <div class="mb-3">
               <label class="form-label">insertar ISBN</label>
