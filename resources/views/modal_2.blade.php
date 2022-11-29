@@ -1,56 +1,65 @@
 
   <!-- Modal -->
-  <div class="modal fade" id="2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="2" aria-hidden="true">
+  <div class="modal fade" id="Modal_2{{$consulta->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Modal_2" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Agregar Recuerdo</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Agregar Libro</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body" style="text-align: center">
-
-          <div class="card-body" style="background-color: black">
-          <div class="modal-body">
-
-              <div class="card-body">
-                <form action="guardar_recuerdo2" method="post">
-                  @csrf
-                  <h2 style="text-align: center">Agregar libro</h2>
-             
+          <div style="background-color: grey">
+          <form action="{{route('editar',$consulta->id)}}" method="POST" >
+            @csrf
+            {!!method_field('PUT')!!}
+            <div class="mb-3">
+              <label class="form-label">insertar ISBN</label>
+              <input  class="form-control" name="ISBN" value="{{$consulta->ISBN}}" >
+              <p class="text-danger">{{ $errors->first('ISBN') }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">insertar Titulo</label>
+              <input class="form-control" name="titulo" value="{{$consulta->TITULO}}">
+              <p class="text-danger">{{ $errors->first('titulo') }}</p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">insertar Autor</label>
+                <input  class="form-control" name="Autor" value="{{$consulta->AUTOR}}">
+                <p class="text-danger">{{ $errors->first('Paginas') }}</p>
               </div>
-              <div class="card-body" style="background-color: black">
-      
-                  <h4 style="text-align: center" >Titulo</h4>
-                  <br>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="a">
-                  <p class="text-danger fst-italic">{{ $errors->first('a') }}</p>
-                    <h4 style="text-align: center">recuerdo</h4>
-                    <br>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"name="b">
-                    <p class="text-danger fst-italic">{{ $errors->first('b') }}</p>
-                
-              
+              <div class="mb-3">
+                <label class="form-label">insertar Paginas</label>
+                <input class="form-control" name="Paginas" value="{{$consulta->PAGINAS}}" >
+                <p class="text-danger">{{ $errors->first('Paginas') }}</p>
               </div>
-              <div class="card-footer text-muted">
-                
-                  <button type="submit"  class="btn btn-success" >Ingresar</button>
+              <div class="mb-3">
+                <label class="form-label">insertar editorial</label>
+                <input  class="form-control" name="editorial" value="{{$consulta->EDITORIAL}}">
+                <p class="text-danger">{{ $errors->first('editorial') }}</p>
               </div>
-          </form>
+              <div class="mb-3">
+                <label class="form-label">insertar Mail de la Editorial</label>
+                <input class="form-control" name="Mail_Editorial" value="{{$consulta->EMAIL}}">
+                <p class="text-danger">{{ $errors->first('Mail_Editorial') }}</p>
               </div>
-          </div>
-             
-    
-         
-        
-        </div>
-        </div>
-
-        <div class="modal-footer">
           
-   
-        </form>
+        
+           
+        
+             
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Editar</button>
+          </div>
+    
+    
+      </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Canselar</button>
         </div>
 
       </div>

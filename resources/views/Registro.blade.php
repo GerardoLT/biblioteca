@@ -26,7 +26,7 @@
                     <a  class="nav-link active" aria-current="page" style="color: aliceblue" href="/">Principal</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="1">Libros</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.libros')}}">Libros</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
@@ -51,17 +51,24 @@
             <br>
             @endforeach
         @endif
- @if (session()->has('confirmacion'))
+ @if (session()->has('m1'))
  <br>
  <div class="alert alert-success" role="alert">
-    Libro guardado
+    Libro guardado con exito
  </div>
  <br>
  @endif
- @if (session()->has('mensaje'))
+ @if (session()->has('m3'))
  <br>
  <div class="alert alert-success" role="alert">
-    Libro Eliminado
+    Libro Eliminado con exito
+ </div>
+ <br>
+ @endif
+ @if (session()->has('m2'))
+ <br>
+ <div class="alert alert-success" role="alert">
+    Libro Editado con exito
  </div>
  <br>
  @endif
@@ -89,7 +96,7 @@
         <td> <a>{{$consulta->AUTOR}}</a></td>
         <td> <a>{{$consulta->EDITORIAL}}</a></td>
         <td> 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#2">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_2{{$consulta->id}}">
                 Editar
             </button>
         </td>

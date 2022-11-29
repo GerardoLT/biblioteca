@@ -49,7 +49,7 @@ class Controlador3 extends Controller
             "updated_at"=> Carbon::now(),
            ]);
       
-           return redirect("Registro" )->with('confirmacion','exito');
+           return redirect("Registro" )->with('m1','exito');
     }
 
     /**
@@ -69,9 +69,20 @@ class Controlador3 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Validaciones_biblioteca $request,$id)
     {
-        //
+        DB::table('libros')->where('id',$id)->update([
+            "ISBN"=>$request->input("ISBN"),
+            "TITULO"=>$request->input("titulo"),
+            "AUTOR"=> $request->input("Autor"),
+            "PAGINAS"=>$request->input("Paginas"),
+            "EDITORIAL"=>$request->input("editorial"),
+            "EMAIL"=> $request->input("Mail_Editorial"),
+
+            "updated_at"=> Carbon::now(),
+           ]);
+      
+           return redirect("Registro" )->with('m2','exito');
     }
 
     /**
@@ -95,6 +106,6 @@ class Controlador3 extends Controller
     public function destroy($id)
     {
         DB::table('libros')->where('id',$id)->delete();
-        return redirect('Registro')->with('mensaje',"eliminar");
+        return redirect('Registro')->with('m3',"eliminar");
     }
 }
