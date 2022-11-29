@@ -1,44 +1,37 @@
 
   <!-- Modal -->
-  <div class="modal fade" id="3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="3" aria-hidden="true">
+  <div class="modal fade" id="Modal_3{{$consulta->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Modal_3" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Agregar Recuerdo</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Eliminar libro</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body" style="text-align: center">
 
-          <div class="card-body" style="background-color: black">
+          <div class="card-body" >
           <div class="modal-body">
 
-              <div class="card-body">
-                <form action="guardar_recuerdo2" method="post">
+              <div class="card-body" style="color: black">
+                <form method="post" action="{{route('dead',$consulta->id)}}">
                   @csrf
-                  <h2 style="text-align: center">Agregar libro</h2>
+                  {!!method_field('PUT')!!}
+                  <br>
+                  <h4  >Titulo</h4>
+                  <h1 >{{$consulta->TITULO}}"</h1>
+                  
+                    <h2  >Autor</h2>
+                    <br>
+                    <h1>{{$consulta->AUTOR}}"</h1>
+                    <h2  >ISBN</h2>
+                    <br>
+                    <h2>{{$consulta->ISBN}}"</h2>
              
               </div>
-              <div class="card-body" style="background-color: black">
-      
-                  <h4 style="text-align: center" >Titulo</h4>
-                  <br>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="a">
-                  <p class="text-danger fst-italic">{{ $errors->first('a') }}</p>
-                    <h4 style="text-align: center">recuerdo</h4>
-                    <br>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"name="b">
-                    <p class="text-danger fst-italic">{{ $errors->first('b') }}</p>
-                
-              
-              </div>
-              <div class="card-footer text-muted">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Canselar</button>
-                  <button type="submit"  class="btn btn-success" >Ingresar</button>
-              </div>
-          </form>
-              </div>
+
+
           </div>
              
     
@@ -48,8 +41,8 @@
         </div>
 
         <div class="modal-footer">
-          
-   
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Canselar</button>
+          <button type="submit" class="btn btn-primary">Eliminar</button>
         </form>
         </div>
 

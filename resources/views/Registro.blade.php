@@ -1,10 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-
-@include('modal_1')
-@include('modal_2')
-@include('modal_3')
+    @include('modal_1')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Libros</title>
@@ -45,23 +42,49 @@
     <br>
 <div >
     <br>
+    @if($errors->any())
+            @foreach ($errors->all() as $error)
+            <br>
+            <div class="alert alert-warning" role="alert">
+               Libro guardado
+            </div>
+            <br>
+            @endforeach
+        @endif
+ @if (session()->has('confirmacion'))
+ <br>
+ <div class="alert alert-success" role="alert">
+    Libro guardado
+ </div>
+ <br>
+ @endif
+ @if (session()->has('mensaje'))
+ <br>
+ <div class="alert alert-success" role="alert">
+    Libro Eliminado
+ </div>
+ <br>
+ @endif
     <div class="container col-md-6" style="background-color: darkgrey">
  <br>
-
+ 
 <table class="table table-dark table-hover">
   <tr>
     <td>
       <table class="table table-dark table-hover">   
         <tbody>
             <tr>
-                <td>Fecha</td>
                 <td>Titulo</td>
-                <td>Recuerdo</td>
+                <td>Autor</td>
+                <td>Editorial</td>
                 <td>Editar</td>
                 <td>Eliminar</td>
                 </tr>
         <tr>
-        @foreach($Datos as $consulta)
+        @foreach($Datos as $consulta)       
+     
+        @include('modal_2')
+        @include('modal_3')
         <td> <a>{{$consulta->TITULO}}</a></td>
         <td> <a>{{$consulta->AUTOR}}</a></td>
         <td> <a>{{$consulta->EDITORIAL}}</a></td>
@@ -71,7 +94,7 @@
             </button>
         </td>
         <td> 
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#3">
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_3{{$consulta->id}}">
             eliminar
         </button>
         
@@ -85,20 +108,14 @@
     <td>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_1">
         Agregar
-     </button>
+      </button>
     </td>
   </tr>
 </table>
 
         </div>
       </div>
-      @if (session()->has('confirmacion'))
-      <br>
-      <div class="alert alert-success" role="alert">
-         Libro guardado
-      </div>
-      <br>
-      @endif
+    
     </div>
   <div>
     <br>

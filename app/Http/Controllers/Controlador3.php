@@ -48,8 +48,8 @@ class Controlador3 extends Controller
             "created_at"=> Carbon::now(),
             "updated_at"=> Carbon::now(),
            ]);
-           $titulo=$request->input('titulo');
-           return redirect("Registro",compact("titulo") )->with('confirmacion','exito');
+      
+           return redirect("Registro" )->with('confirmacion','exito');
     }
 
     /**
@@ -94,6 +94,7 @@ class Controlador3 extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('libros')->where('id',$id)->delete();
+        return redirect('Registro')->with('mensaje',"eliminar");
     }
 }

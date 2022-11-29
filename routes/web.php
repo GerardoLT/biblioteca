@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('Registro',[Controlador3::class,'index'])->name('mostrar.libros');
 Route::post('guardar',[Controlador3::class,'store'])->name('guardar');
+Route::put('Registro/{id}/destroy',[Controlador3::class,'destroy'])->name('dead');
