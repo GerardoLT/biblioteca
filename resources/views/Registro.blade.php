@@ -29,7 +29,7 @@
                     <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.libros')}}">Libros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.Clientes')}}">Clientes</a>
                   </li>
                 </ul>
               </div>
@@ -43,13 +43,13 @@
 <div >
     <br>
     @if($errors->any())
-            @foreach ($errors->all() as $error)
+           
             <br>
             <div class="alert alert-warning" role="alert">
-               Libro guardado
+               error
             </div>
             <br>
-            @endforeach
+          
         @endif
  @if (session()->has('m1'))
  <br>
@@ -113,7 +113,7 @@
 
     </td>
     <td>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_1">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_1">
         Agregar
       </button>
     </td>

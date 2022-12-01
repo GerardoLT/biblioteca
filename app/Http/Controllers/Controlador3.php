@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\Validaciones_biblioteca;
+use App\Http\Requests\cliente;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
@@ -19,6 +20,7 @@ class Controlador3 extends Controller
         return view("Registro",compact("Datos") );
         
     }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +53,7 @@ class Controlador3 extends Controller
       
            return redirect("Registro" )->with('m1','exito');
     }
+   
 
     /**
      * Display the specified resource.
@@ -69,7 +72,7 @@ class Controlador3 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Validaciones_biblioteca $request,$id)
+    public function edit3(Validaciones_biblioteca $request,$id)
     {
         DB::table('libros')->where('id',$id)->update([
             "ISBN"=>$request->input("ISBN"),

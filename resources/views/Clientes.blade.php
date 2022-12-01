@@ -29,7 +29,7 @@
                     {{route('mostrar.libros')}}">Libros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.Clientes')}}">Clientes</a>
                   </li>
                 </ul>
               </div>
@@ -37,51 +37,91 @@
           </nav>
 
 </head>
-@if (session()->has('mensaje_de_exito'))
+@include('modal_1c')
+@if($errors->any())
+           
 <br>
-<div class="alert alert-success" role="alert" style="align-content: center">
-  <p style="text-align: center">
-  Cliente agregado con exito
-  </p>
+<div class="alert alert-warning" role="alert">
+   error
 </div>
+<br>
 
+@endif
+@if (session()->has('m1'))
+<br>
+<div class="alert alert-success" role="alert">
+Cliente guardado con exito
+</div>
+<br>
+@endif
+@if (session()->has('m3'))
+<br>
+<div class="alert alert-success" role="alert">
+Cliente Eliminado con exito
+</div>
+<br>
+@endif
+@if (session()->has('m2'))
+<br>
+<div class="alert alert-success" role="alert">
+Cliente Editado con exito
+</div>
 <br>
 @endif
   <body>
    <br>
 <div >
  
-    <div class="container col-md-4" style="background-color: darkgrey">
+    <div class="container col-md-8" style="background-color: darkgrey">
  <br>
 
      
 
-<form action="Informacion_cliente" method="POST" >
-    @csrf
-    <div class="mb-3">
-      <label class="form-label">insertar nombre completo</label>
-      <input  class="form-control" name="nombre" value="{{old("nombre")}}" >
-      <p class="text-danger">{{ $errors->first('nombre') }}</p>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">insertar email</label>
-      <input class="form-control" name="email" value="{{old("email")}}">
-      <p class="text-danger">{{ $errors->first('email') }}</p>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">insertar No INE</label>
-        <input  class="form-control" name="ine" value="{{old("ine")}}">
-        <p class="text-danger">{{ $errors->first('ine') }}</p>
-      </div>
-   
+
+
+  <table class="table table-dark table-hover">
+    <tr>
+      <td>
+        <table class="table table-dark table-hover">   
+          <tbody>
+              <tr>
+                  <td>cliente</td>
+                  <td>ine</td>
+                  <td>email</td>
+                  <td>Editar</td>
+                  <td>Eliminar</td>
+                  </tr>
+          <tr>
+          @foreach($Datos as $consulta) 
+          @include('modal_2c')  
+          @include('modal_3c')     
+          <td> <a>{{$consulta->nombre}}</a></td>
+          <td> <a>{{$consulta->ine}}</a></td>
+          <td> <a>{{$consulta->email}}</a></td>
+          <td> 
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_2c{{$consulta->idCliente}}">
+                  Editar
+              </button>
+          </td>
+          <td> 
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_3c{{$consulta->idCliente}}">
+              eliminar
+          </button>
+          
+          </td>
+          </tr>   
+          @endforeach
+          </tbody>
+           </table>
   
-
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
-      </div>
-
-
-  </form>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_1c">
+          Agregar
+        </button>
+      </td>
+    </tr>
+  </table>
         </div>
       </div>
 

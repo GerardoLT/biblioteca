@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\Validaciones_biblioteca;
+use App\Http\Requests\cliente;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
@@ -13,21 +13,18 @@ class Controlador2 extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index2()
     {
-        $resulRec=DB::table('tb_recuerdos')->get();
-        return view("recuerdos",compact("resulRec") );
-        }
-
+        $Datos=DB::table('clientes')->get();
+        return view("Clientes",compact("Datos") );
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-    return view("ingresar");
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -35,30 +32,18 @@ class Controlador2 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidarDiario $request)
+ 
+    public function store2(cliente $request)
     {
-        DB::table('tb_recuerdos')->insert([
-         "Titulo"=>$request->input("a"),
-         "Recuerdo"=>$request->input("b"),
-         "fecha"=> Carbon::now(),
-         "created_at"=> Carbon::now(),
-         "updated_at"=> Carbon::now(),
-        ]);
-        return redirect("crear")->with('confirmacion','exito');
-    }
-    public function store2(Validaciones_biblioteca $request)
-    {
-        DB::table('libros')->insert([
-         "ISBN"=>$request->input("a"),
-         "TITULO"=>$request->input("b"),
-         "AUTOR"=> $request->input("b"),
-         "PAGINAS"=>$request->input("a"),
-         "EDITORIAL"=>$request->input("b"),
-         "EMAIL"=> $request->input("b"),
-         "created_at"=> Carbon::now(),
-         "updated_at"=> Carbon::now(),
-        ]);
-        return redirect("recuerdos")->with('confirmacion','exito');
+        DB::table('clientes')->insert([
+            "nombre"=>$request->input("nombre"),
+            "email"=>$request->input("email"),
+            "ine"=> $request->input("ine"),
+            "created_at"=> Carbon::now(),
+            "updated_at"=> Carbon::now(),
+           ]);
+      
+           return redirect("Clientes" )->with('m1','exito');
     }
     /**
      * Display the specified resource.
@@ -66,12 +51,7 @@ class Controlador2 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $consultaid=DB::table('tb_recuerdos')->where('idrecuerdo',$id)->first();
-
-        return view('modal_',compact('consultaid'));
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -79,11 +59,16 @@ class Controlador2 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {  $resulRec=DB::table('tb_recuerdos')->get();
-        $consultaid=DB::table('tb_recuerdos')->where('idrecuerdo',$id)->first();
-
-        return view('recuerdos',compact('consultaid'),compact('resulRec'));
+    public function edit(cliente $request , $id)
+    {  
+        DB::table('clientes')->where('idCliente',$id)->update([
+            "nombre"=>$request->input("nombre"),
+            "email"=>$request->input("email"),
+            "ine"=> $request->input("ine"),
+            "updated_at"=> Carbon::now(),
+           ]);
+      
+           return redirect("Clientes" )->with('m2','exito');
     }
 
     /**
@@ -93,15 +78,7 @@ class Controlador2 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidarDiario $request, $id)
-    {    $resulRec=DB::table('tb_recuerdos')->get();
-        DB::table('tb_recuerdos')->where('idrecuerdo',$id)->update([
-            "Titulo"=> $request->input('a'),
-            "Recuerdo"=> $request->input('b'),
-            "updated_at"=> Carbon::now()
-        ]);
-        return redirect('recuerdos')->with('mensaje1',"editar");
-    }
+   
 
     /**
      * Remove the specified resource from storage.
@@ -109,10 +86,10 @@ class Controlador2 extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy2($id)
     {
-        DB::table('tb_recuerdos')->where('idrecuerdo',$id)->delete();
-        return redirect('recuerdos')->with('mensaje',"eliminar");
+        DB::table('clientes')->where('idCliente',$id)->delete();
+        return redirect('Clientes')->with('m3',"eliminar");
     
     }
 }

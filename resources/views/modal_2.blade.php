@@ -5,13 +5,13 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Agregar Libro</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black">Editar Libro</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body" style="text-align: center">
           <div style="background-color: grey">
-          <form action="{{route('editar',$consulta->id)}}" method="POST" >
+          <form action="{{route('editar.libros',$consulta->id)}}" method="POST" >
             @csrf
             {!!method_field('PUT')!!}
             <div class="mb-3">

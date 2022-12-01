@@ -28,7 +28,7 @@
                     <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.libros')}}">Libros</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="2">Clientes</a>
+                    <a class="nav-link active" aria-current="page" style="color: aliceblue" href="{{route('mostrar.Clientes')}}">Clientes</a>
                   </li>
                 </ul>
               </div>
