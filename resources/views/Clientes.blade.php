@@ -39,33 +39,37 @@
 </head>
 @include('modal_1c')
 @if($errors->any())
-           
+  
 <br>
-<div class="alert alert-warning" role="alert">
-   error
-</div>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Problemas para continuar la accion revise los datos ingresados</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <br>
 
 @endif
 @if (session()->has('m1'))
 <br>
-<div class="alert alert-success" role="alert">
-Cliente guardado con exito
-</div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Cliente {{session("m1")["titulo"]}} añandido con exito</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
 <br>
 @endif
 @if (session()->has('m3'))
 <br>
-<div class="alert alert-success" role="alert">
-Cliente Eliminado con exito
-</div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Cliente Eliminado con exito</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
 <br>
 @endif
 @if (session()->has('m2'))
 <br>
-<div class="alert alert-success" role="alert">
-Cliente Editado con exito
-</div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Cliente Editado con exito</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
 <br>
 @endif
   <body>

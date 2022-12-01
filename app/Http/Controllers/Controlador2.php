@@ -34,7 +34,7 @@ class Controlador2 extends Controller
      */
  
     public function store2(cliente $request)
-    {
+    {$titulo=$request->input("nombre");
         DB::table('clientes')->insert([
             "nombre"=>$request->input("nombre"),
             "email"=>$request->input("email"),
@@ -43,7 +43,7 @@ class Controlador2 extends Controller
             "updated_at"=> Carbon::now(),
            ]);
       
-           return redirect("Clientes" )->with('m1','exito');
+           return redirect("Clientes" )->with('m1',compact("titulo"));
     }
     /**
      * Display the specified resource.

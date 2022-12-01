@@ -39,7 +39,7 @@ class Controlador3 extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Validaciones_biblioteca $request)
-    {
+    { $titulo=$request->input("titulo");
         DB::table('libros')->insert([
             "ISBN"=>$request->input("ISBN"),
             "TITULO"=>$request->input("titulo"),
@@ -51,7 +51,7 @@ class Controlador3 extends Controller
             "updated_at"=> Carbon::now(),
            ]);
       
-           return redirect("Registro" )->with('m1','exito');
+           return redirect("Registro" )->with('m1',compact("titulo"));
     }
    
 
@@ -74,6 +74,7 @@ class Controlador3 extends Controller
      */
     public function edit3(Validaciones_biblioteca $request,$id)
     {
+       
         DB::table('libros')->where('id',$id)->update([
             "ISBN"=>$request->input("ISBN"),
             "TITULO"=>$request->input("titulo"),

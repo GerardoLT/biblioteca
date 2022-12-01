@@ -54,7 +54,7 @@
  @if (session()->has('m1'))
  <br>
  <div class="alert alert-success" role="alert">
-    Libro guardado con exito
+    Libro {{session("m1")["titulo"]}} guardado con exito
  </div>
  <br>
  @endif
@@ -72,7 +72,7 @@
  </div>
  <br>
  @endif
-    <div class="container col-md-6" style="background-color: darkgrey">
+    <div class="container col-md-8" style="background-color: darkgrey">
  <br>
  
 <table class="table table-dark table-hover">
@@ -81,9 +81,12 @@
       <table class="table table-dark table-hover">   
         <tbody>
             <tr>
+                <td>ISBN</td>
                 <td>Titulo</td>
                 <td>Autor</td>
+                <td>Pagina</td>
                 <td>Editorial</td>
+                <td>Email</td>
                 <td>Editar</td>
                 <td>Eliminar</td>
                 </tr>
@@ -92,9 +95,12 @@
      
         @include('modal_2')
         @include('modal_3')
+        <td> <a>{{$consulta->ISBN}}</a></td>
         <td> <a>{{$consulta->TITULO}}</a></td>
         <td> <a>{{$consulta->AUTOR}}</a></td>
+        <td> <a>{{$consulta->PAGINAS}}</a></td>
         <td> <a>{{$consulta->EDITORIAL}}</a></td>
+        <td> <a>{{$consulta->EMAIL}}</a></td>
         <td> 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_2{{$consulta->id}}">
                 Editar
